@@ -1,0 +1,18 @@
+FROM ubuntu:18.04
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the current directory contents into the container
+COPY . /app
+
+# Update the package list and install Python 3
+RUN apt-get update && apt-get install -y python3
+
+# Set the command to run your Python script
+CMD python3 /app/main.py
+
+# Add a label (optional)
+LABEL color=red
+
+
