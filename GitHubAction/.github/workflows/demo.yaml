@@ -3,10 +3,8 @@ name: Action Demo
 on:
   push:
     paths:
-      - 'GitHubAction'
-  pull_request:
-    paths:
-      - 'GitHubAction'
+      - 'GitHubAction/.github/**'
+
   workflow_dispatch:
 
 jobs:
