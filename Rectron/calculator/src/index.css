@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* In your CSS or stylesheets */
+button {
+    @apply p-2  shadow-sm  border border-green-300 ;
+    /* Add any other common styles you want to apply to all buttons */
+  }
+  
+
+  .number-button{
+    @apply  hover:bg-green-500 text-white py-2 px-4 rounded shadow-md border border-green-300;
+
+  }
+  .function-button {
+    @apply hover:bg-red-500 p-4 text-2xl border border-green-300 hover:scale-105
+  }
+
+ 
+.glass-container {
+
+  background-color: rgba(255, 255, 255, 0.1); 
+
+  /* Blur effect for the background */
+  backdrop-filter: blur(20px); /* Adjust the blur amount as needed */
+
+  /* Other styling */
+  padding: 20px;
+  border-radius: 8px;
+}
+
