@@ -1,0 +1,24 @@
+name: Action Demo
+
+on:
+  push:
+    paths:
+      - 'GitHubAction/.github/**'
+
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Print a message
+        run: echo "Hello, this is an Action Demo"
+        shell: bash
+  goodBye:
+    runs-on: windows-latest
+    steps:
+      - name: WindowsOperating
+        run : echo "Goodbye"
+        shell: bash 
