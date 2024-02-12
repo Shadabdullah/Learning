@@ -1,4 +1,4 @@
-import 'package:app0/main.dart';
+import 'package:app0/providers/myapp_state.dart';
 import 'package:app0/widgets/big_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +27,7 @@ class GeneratorPage extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               ElevatedButton(
                 onPressed: appState.toggleFavourite,
