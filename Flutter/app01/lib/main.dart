@@ -1,3 +1,5 @@
+import 'package:app01/listitem.dart';
+import 'package:app01/widgets/lists_items.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,20 +29,19 @@ class TutorialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            leading: IconButton(
+        appBar: AppBar( backgroundColor: Colors.green,
+            leading: const IconButton(
               icon: Icon(Icons.menu),
               tooltip: 'Menu',
               onPressed: null,
             ),
-            title: Text("Flutter"),
+            title: const Text("Flutter"),
             actions: const [
               IconButton(
                   icon: Icon(Icons.search), tooltip: 'Seacrh', onPressed: null)
             ]),
-        body: Center(child: Text("TextAtCenter")),
-        floatingActionButton: FloatingActionButton(
-        tooltip:'Add', onPressed:null , child:Icon(Icons.add)   
-      ));
+        body:ListItems(items: items) , 
+        floatingActionButton: const FloatingActionButton(
+            tooltip: 'Add', onPressed: null, child: Icon(Icons.add)));
   }
 }
