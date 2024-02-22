@@ -10,7 +10,7 @@ final items = List<NestedListItems>.generate(
     1000,
     (index) => index % 6 == 0
         ? HeadingItems('Heading $index')
-        : ManageItems('Sender $index', 'Message body $index'));
+        : Messages('Sender $index', 'Message body $index'));
 
 class HeadingItems implements NestedListItems {
   final String headings;
@@ -29,11 +29,11 @@ class HeadingItems implements NestedListItems {
   Widget buildSubTitle(BuildContext context) => const SizedBox.shrink();
 }
 
-class ManageItems implements NestedListItems {
+class Messages implements NestedListItems {
   final String sender;
   final String body;
 
-  ManageItems(this.sender, this.body);
+  Messages(this.sender, this.body);
 
   @override
   Widget buildTitle(BuildContext context) => Text(sender, style: const TextStyle(color: Colors.red),);
