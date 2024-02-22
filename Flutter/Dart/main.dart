@@ -1,4 +1,5 @@
 void main() {
+  test( 5 ,  5);
   // Variables
   print(variableFun());
 }
@@ -11,11 +12,19 @@ String variableFun() {
   const valueB = 2 * valueA;
   print(valueB);
 
-  var buffer = StringBuffer() ;
+  var buffer = StringBuffer();
 
-  for (var i = 0 ; i < 100 ; i++) {
+  for (var i = 0; i < 100; i++) {
     buffer.write('$i');
     print(buffer);
+
+
   }
+
   var value = buffer.toString();
-  return "VariableFun"; }
+  return "VariableFun";
+}
+
+void test(int a, int b) {
+print("$a");
+print("$b");} 
