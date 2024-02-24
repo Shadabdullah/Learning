@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class LocationListItems extends StatelessWidget {
   final String imageUrl;
   final String name;
-  final String country;
+  final String place;
 
   const LocationListItems(
       {super.key,
       required this.imageUrl,
       required this.name,
-      required this.country});
+      required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,11 @@ class LocationListItems extends StatelessWidget {
         aspectRatio: 16 / 9,
         child: ClipRect(
           child: Stack(
-            children: [_buildParallaxBackground(context)],
+            children: [
+              _buildParallaxBackground(context),
+              _buildGradient(),
+              _buildTitleAndSubTitle()
+            ],
           ),
         ),
       ),
@@ -27,10 +31,67 @@ class LocationListItems extends StatelessWidget {
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
+    return Flow(
+      delegate: ParallaxFlowWidget(),
+      children: [
+        Image.network(
+          imageUrl,
+          fit: BoxFit.cover,
+        )
+      ],
+    );
+  }
+
+  Widget _buildGradient() {
     return Positioned.fill(
-        child: Image.network(
-      imageUrl,
-      fit: BoxFit.cover,
-    ));
+        child: DecoratedBox(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.black.withOpacity(0.7)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: const [0.6, 0.95]))));
+  }
+
+  Widget _buildTitleAndSubTitle() {
+    return Positioned(
+        bottom: 20,
+        left: 20,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              place,
+              style: const TextStyle(color: Colors.white, fontSize: 14),
+            )
+          ],
+        ));
+  }
+}
+
+class ParallaxFlowWidget extends FlowDelegate {
+  ParallaxFlowWidget();
+
+  @override
+  BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
+    return BoxConstraints.tightFor(width: constraints.maxWidth);
+  }
+
+  @override
+  void paintChildren(FlowPaintingContext context) {}
+  // Todo
+
+  @override
+  bool shouldRepaint(covariant FlowDelegate oldDelegate) {
+    // TODO: implement shouldRepaint
+    return true;
   }
 }
