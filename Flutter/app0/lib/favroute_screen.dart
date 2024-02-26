@@ -13,9 +13,12 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   Widget build(BuildContext context) {
+
     return Container(
       color: const Color.fromARGB(255, 232, 187, 187),
-      child: Consumer<MyappState>(
+
+      child:    Consumer<MyappState>(
+
         builder: (context, value, child) {
           List<WordPair> favourites = value.favourites;
           if (favourites.isNotEmpty) {
@@ -27,7 +30,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(favourites[index].asPascalCase),
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                       ),
                       ElevatedButton(
@@ -37,7 +40,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             });
                             
                           },
-                          child: Icon(Icons.delete_outline)),
+                          child: const Icon(Icons.delete_outline)),
                     ],
                   ),
                 );
@@ -47,7 +50,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           return Center(
             child: Container(
                 color: const Color.fromARGB(255, 232, 187, 187),
-                child: Text('Nothing In Favourite')),
+                child: const Text('Nothing In Favourite')),
           );
         },
       ),

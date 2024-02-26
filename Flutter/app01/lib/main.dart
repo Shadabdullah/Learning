@@ -31,8 +31,9 @@ class TutorialPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar( backgroundColor: Colors.green,
             leading: const IconButton(
-              icon: Icon(Icons.menu),
+
               tooltip: 'Menu',
+              icon: Icon(Icons.menu),
               onPressed: null,
             ),
             title: const Text("Flutter"),
