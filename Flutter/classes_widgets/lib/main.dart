@@ -1,4 +1,4 @@
-import 'package:classes_widgets/classes/custom_scroll/customscroll.dart';
+import 'package:classes_widgets/classes/tapbox/tapboxScree.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
           ),
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
         ),
-        home: const CustomScrollSliver());
+        home: TapBoxScreen());
   }
 }
