@@ -1,7 +1,0 @@
-require("shad.plugins-setup")
-require("shad.core.options")
-require("shad.core.colorscheme")
-require("shad.core.keymaps")
-require("shad.plugins.comment")
-require("shad.plugins.nvim-tree")
-require("shad.plugins.lualine")
