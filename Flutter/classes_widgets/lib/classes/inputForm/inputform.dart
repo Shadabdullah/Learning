@@ -1,58 +1,48 @@
-// Define a custom Form widget.
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({super.key});
+class CustomForm extends StatefulWidget {
+  const CustomForm({super.key});
 
   @override
-  State<MyCustomForm> createState() => _MyCustomFormState();
+  State<CustomForm> createState() => _CustomFormState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
-class _MyCustomFormState extends State<MyCustomForm> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
+class _CustomFormState extends State<CustomForm> {
   final myController = TextEditingController();
 
   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text("Input Form "),
+      ),
+      body: Center(
+        child: Container(
+          margin: const EdgeInsets.all(20),
+          child: TextField(
+            decoration: InputDecoration(border: OutlineInputBorder()),
+            controller: myController,
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     myController.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Retrieve Text Input'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: TextField(
-          controller: myController,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        // When the user presses the button, show an alert dialog containing
-        // the text that the user has entered into the text field.
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                // Retrieve the text the that user has entered by using the
-                // TextEditingController.
-                content: Text(myController.text),
-              );
-            },
-          );
-        },
-        tooltip: 'Show me the value!',
-        child: const Icon(Icons.text_fields),
-      ),
-    );
+  void initState() {
+    super.initState();
+    myController.addListener(_printLatestValue);
+  }
+
+  void _printLatestValue() {
+    final text = myController.text;
+    print('this is Latest text $text');
   }
 }

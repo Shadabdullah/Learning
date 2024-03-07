@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
           ),
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
         ),
-        home: MyCustomForm());
+        home: CustomForm());
   }
 }
