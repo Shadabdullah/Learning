@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_todo/todo_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,14 +27,11 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.amber,
-        title: const Text('Todo App'),
-      ),
-      body: const Center(
-        child: Text('Todo App'),
-      ),
-    );
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: const Text('Todo App'),
+        ),
+        body: const TodoList());
   }
 }
