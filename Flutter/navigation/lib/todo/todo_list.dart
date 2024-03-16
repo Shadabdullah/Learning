@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_todo/detail_screen.dart';
-import 'package:navigation_todo/utils/todo.dart';
+import 'package:navigation_todo/todo/detail_screen.dart';
+import 'package:navigation_todo/todo/utils/todo.dart';
 
 class TodoList extends StatelessWidget {
   const TodoList({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_todo/utils/todo.dart';
+import 'package:navigation_todo/todo/utils/todo.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.todo});
