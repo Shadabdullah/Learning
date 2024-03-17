@@ -21,6 +21,12 @@ class _SelectionState extends State<Selection> {
   Future<void> _navigationAndSelectionDisplay(BuildContext context) async {
     final result = await Navigator.push(context,
         MaterialPageRoute(builder: (context) => const SelectionScreen()));
+    if (!context.mounted) {
+      return;
+    }
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('$result')));
   }
 }
 
@@ -42,13 +48,17 @@ class SelectionScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context, 'Yep');
                 },
                 child: const Text('Yep')),
           ),
           Padding(
             padding: const EdgeInsets.all(8),
-            child: ElevatedButton(onPressed: () {}, child: const Text('Nope')),
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context, 'Nope');
+                },
+                child: const Text('Nope')),
           )
         ],
       )),
