@@ -10,8 +10,12 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.green[100],
         title: const Text('Animation'),
       ),
-      body: const Center(
-        child: Text("Animation"),
+      body: Center(
+        child: Container(
+            height: 200,
+            width: 200,
+            color: Colors.pink[200],
+            child: const Text("Animation")),
       ),
     );
   }
