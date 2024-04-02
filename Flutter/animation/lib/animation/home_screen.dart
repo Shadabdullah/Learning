@@ -12,10 +12,25 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-            height: 200,
-            width: 200,
-            color: Colors.pink[200],
-            child: const Text("Animation")),
+          height: 200.0, // Use double precision for consistency
+          width: 200.0, // Use double precision for consistency
+          decoration: BoxDecoration(
+            borderRadius:
+                BorderRadius.circular(10.0), // Set desired corner radius
+          ),
+          color: Colors.pink[200],
+          child: const Center(
+            // Center the text within the container
+            child: Text(
+              "Animation",
+              style: TextStyle(
+                // Optional: style the text
+                fontSize: 16.0, // Set preferred font size
+                color: Colors.black, // Set preferred text color
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
