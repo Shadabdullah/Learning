@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +17,9 @@ class HomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius:
                 BorderRadius.circular(10.0), // Set desired corner radius
+            color: Colors.green[100],
           ),
-          color: Colors.pink[200],
-          child: const Center(
+          child: Center(
             // Center the text within the container
             child: Text(
               "Animation",
