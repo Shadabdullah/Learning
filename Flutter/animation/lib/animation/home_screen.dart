@@ -19,14 +19,12 @@ class HomeScreen extends StatelessWidget {
                 BorderRadius.circular(10.0), // Set desired corner radius
             color: Colors.green[100],
           ),
-          child: Center(
-            // Center the text within the container
+          child: const Center(
             child: Text(
               "Animation",
               style: TextStyle(
-                // Optional: style the text
-                fontSize: 16.0, // Set preferred font size
-                color: Colors.black, // Set preferred text color
+                fontSize: 16.0,
+                color: Colors.black,
               ),
             ),
           ),
