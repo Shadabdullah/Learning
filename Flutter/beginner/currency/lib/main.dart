@@ -30,8 +30,20 @@ class CurrencyApp extends StatefulWidget {
 
 class _CurrencyAppState extends State<CurrencyApp> {
   final TextEditingController texteditingController = TextEditingController();
-
   double result = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    texteditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
@@ -51,7 +63,7 @@ class _CurrencyAppState extends State<CurrencyApp> {
               children: [
                 Text(
                   'INR $result',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 33,
                     fontWeight: FontWeight.bold,
@@ -77,9 +89,10 @@ class _CurrencyAppState extends State<CurrencyApp> {
                 const SizedBox(height: 10),
                 ElevatedButton(
                     onPressed: () {
-                      result =
-                          double.tryParse(texteditingController.text)! * 84;
-                      print(result);
+                      setState(() {
+                        result =
+                            double.tryParse(texteditingController.text)! * 84;
+                      });
                     },
                     style: TextButton.styleFrom(
                         backgroundColor: Colors.black,
