@@ -17,13 +17,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
     super.initState();
   }
 
-  Future getWeatherData() async {
-    String cityName = ' London';
-
+  Future<void> getWeatherData() async {
+    String cityName = 'London';
     final String apiKey =
-        'api.openweathermap.org/data/2.5/weather?q=$cityName,uk&APPID=7b055ca7e4fe39f7326abf7695c7468d';
-    final res = await http.get(Uri.parse(apiKey));
-    print(res);
+        'http://api.openweathermap.org/data/2.5/weather?q=$cityName,uk&APPID=7b055ca7e4fe39f7326abf7695c7468d';
+    final response = await http.get(Uri.parse(apiKey));
+
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      throw Exception('Failed to load weather data');
+    }
   }
 
   @override
