@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key); // Added 'Key? key' parameter
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key); // Added 'Key? key' parameter
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -26,7 +26,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double _numberForm = 0;
-  final List<String> _imperial = [
+  String _startMeasure = '';
+  String _toValue = '';
+  final List<String> _measures = [
     'meters',
     'kilometers',
     'grams',
@@ -39,8 +41,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _numberForm = 0;
     super.initState();
+    _startMeasure = _measures.first;
   }
 
   @override
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.red[600],
         title: const Text(
           "Unit Conversion",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
         ),
         centerTitle: true,
       ),
@@ -58,11 +60,19 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const Text('Value', style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(
-              height: 10,
+              height: 16,
+            ),
+            const Text('Value',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                )),
+            const SizedBox(
+              height: 16,
             ),
             TextField(
+              keyboardType: TextInputType.number,
               onChanged: (input) {
                 var rv = double.tryParse(input);
                 if (rv != null) {
@@ -72,37 +82,58 @@ class _HomePageState extends State<HomePage> {
                 }
               },
             ),
-            Text((_numberForm == null) ? '' : _numberForm.toString()),
+            const SizedBox(
+              height: 16,
+            ),
             const Text('From', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 16,
+            ),
             DropdownButton(
-              items: _imperial.map((String value) {
-                return DropdownMenuItem(
+              value:
+                  _startMeasure, // Set the value to the current selected item
+              items: _measures.map((String value) {
+                return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                // Implement your logic here when dropdown value changes
+                setState(() {
+                  _startMeasure = newValue!; // Update the selected item
+                });
               },
             ),
             const SizedBox(
               height: 16,
             ),
             const Text('To', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 16,
+            ),
             DropdownButton(
-              items: _imperial.map((String value) {
-                return DropdownMenuItem(
+              value:
+                  _startMeasure, // Set the value to the current selected item
+              items: _measures.map((String value) {
+                return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                // Implement your logic here when dropdown value changes
+                setState(() {
+                  _startMeasure = newValue!; // Update the selected item
+                });
               },
             ),
             const SizedBox(
               height: 16,
             ),
+            ElevatedButton(onPressed: () {}, child: const Text("Convert")),
+            const SizedBox(
+              height: 16,
+            ),
+            const Text('54.24')
           ],
         ),
       ),
